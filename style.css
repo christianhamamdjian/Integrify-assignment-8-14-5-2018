@@ -1,0 +1,251 @@
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: #52888c;
+  }
+ul {
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+#shopping-list {
+  width:80%;
+  height: 100%;
+  margin: 0 auto;
+  background: #f0c40f;
+  padding:60px 10px;
+  min-width: 800px;
+}
+h1{
+  text-align: center;
+  font-size: 3em;
+  color:#fff;
+  margin-top: 40px;
+}
+#input-form {
+  width: 80%;
+  height: 80px;
+  margin: 0 auto;
+  background: #f0c40f;
+  display:grid;
+  grid-template-columns: 59% 20% 20%;
+  grid-gap: 4px;
+}
+#input-form input[type="text"]{
+  font-size: 1.2em;
+  font-weight: 100;
+  border: 0;
+  outline: none;
+  padding-left: 20px;
+}
+input[type="checkbox"]{
+  display:none;
+}
+input[type="number"]{
+  padding-left: 10px;
+  font-size: 1.4em;
+  text-align: center;
+  outline: none;
+  color: rgb(182, 181, 181);
+  border: 0;
+}
+#item-counter {
+  color: rgb(182, 181, 181);
+  text-align: center;
+  font-size: 1.4em;
+  padding-top: 25px;
+}
+#add-item-btn {
+  background: #ff534d;
+  font-size: 1.8em;
+  font-weight: 100;
+  color: #fff;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+#add-item-btn:hover {
+  background: #bf150f;
+  font-size: 1.8em;
+  font-weight: 100;
+  color: #fff;
+  border: 0;
+  font-weight: bold;
+}
+#added-items-list {
+  width:80%;
+  min-height: 80px;
+  background: #fff;
+  margin: 40px auto;
+  padding:0;
+}
+#added-items-list h2{
+  width:20%;
+  padding:20px;
+  font-weight: 100;
+  margin:0 auto;
+  color: #fd6631;
+  font-size: 1.8em;
+  text-align: center;
+}
+.added-items {
+  width: 100%;
+  margin:0;
+  padding:0;
+}
+.added-item {
+  width: 100%;
+  background: #fd6631;
+  color: #fff;
+  font-size: 1.4em;
+  display:grid;
+  grid-template-columns: 100px 1fr 100px 100px;
+  grid-auto-rows: 80px;
+  border-bottom: 1px solid #fff;
+}
+.added-item:last-child{
+  border-bottom: 0px solid transparent;
+}
+.added-item-text {
+  padding: 20px;
+  font-size: 1.2em;
+  }
+.added-item-text-done {
+  padding: 20px;
+  font-size: 1.2em;
+  text-decoration: line-through;
+  }
+.delete-item-btn {
+  background: #fc880f;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.delete-item-btn:hover {
+  background: #b05c03;
+}
+.done-item-btn {
+  background: #fc880f;
+  color: #fff;
+  font-size: 1.4em;
+  text-align: center;
+  padding-top: 20px;
+  cursor: pointer;
+}
+.done-item-btn:hover {
+  background: #b05c03;
+}
+.undo-item-btn {
+  background: #fc880f;
+  color: #fff;
+  font-size: 2.6em;
+  text-align: center;
+  padding-top: 0px;
+  cursor: pointer;
+  font-weight: bolder
+}
+.undo-item-btn:hover {
+  background: #b05c03;
+}
+#done-items-list {
+  width:80%;
+  min-height: 80px;
+  background: #fff;
+  margin: 40px auto;
+  padding:0;
+}
+#done-items-list h2{
+  /* width:100px; */
+  height:80px;
+  padding: 0px;
+  margin:0;
+  font-weight: 100;
+  color: #54dae0;
+}
+#done-items-list h2 a{
+  width:100%;
+  padding: 20px;
+  margin:0;
+  font-weight: 100;
+  color: #54dae0;
+  text-decoration: none;
+}
+#done-items-list h2 a:hover{
+  width:80%;
+  padding: 20px;
+  margin:0;
+  font-weight: 100;
+  color: #ff1100;
+  text-decoration: none;
+}
+#done-list {
+  display: none;
+  /* border-top: 1px solid #fff; */
+}
+.done-items {
+  width: 100%;
+  margin:0;
+  padding:0;
+}
+.done-item {
+  width: 100%;
+  background: #54dae0;
+  color: #fff;
+  font-size: 1.4em;
+  display:grid;
+  grid-template-columns: 100px 1fr 100px 100px;
+  grid-auto-rows: 80px;
+  border-bottom: 1px solid #fff;
+}
+#added-items-list .added-item .added-item-text p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+#done-list #done-items .added-item .added-item-text{
+  background: #05c4d2;
+}
+#done-list #done-items .added-item .added-item-text p {
+  margin: 0;
+  padding: 0;
+  text-decoration: line-through;
+}
+.done-item:last-child{
+  border-bottom: 0px solid transparent;
+}
+#toggle-done-list-btn {
+  background: #01aeba;
+  color: #fff;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: pointer;
+  border: 0px;
+  outline:none;
+  width: 100%;
+  height: 100%;
+}
+#toggle-done-list-btn:hover {
+  background: #01aeba;
+}
+#done-item-text {
+  width: 80%;
+  padding:20px; 
+  margin:0;
+  text-decoration: line-through;
+  font-size: 1.2em;
+}
+.added-quantity {
+background: #52888c;
+text-align: center;
+padding-top:25px;
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid white;
+  margin:0 auto;
+}
+

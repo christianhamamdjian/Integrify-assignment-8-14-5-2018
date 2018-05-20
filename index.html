@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping list</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="shopping-list">
+  <h1>Shopping list</h1>
+<form id="input-form" onsubmit="event.preventDefault();">
+
+<input id="item" placeholder="What's missing from our kitchen?" type="text" pattern="^[a-zA-Z0-9?]{2,20}(\s[a-zA-Z]{2,20})?$" name = "text"/>
+
+<input id="quantity" placeholder="Quantity" type="number" min="1"  name= = "quantity"/>
+<input type="submit" id="add-item-btn" value="add">
+</form>
+<div id="added-items-list">
+    <h2>My list</h2>    
+<ul id="added-items">
+</ul>
+</div>
+<div id="done-items-list">
+  <h2><button id="toggle-done-list-btn" onclick="showslist('done-list')">Done</button></h2>
+  <div id="done-list">
+<ul id="done-items">
+</ul>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
