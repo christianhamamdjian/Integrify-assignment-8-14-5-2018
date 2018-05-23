@@ -57,7 +57,109 @@ document.getElementById('add-item-btn').addEventListener('click', function () {
   } 
 });
 
-function doneItem (event) {
+function refuseDuplicates() {
+// get "addedText" and "find" in todo and done if there is the same value already there.
+// get "addedQuantity" and replace the old one with the new one.
+}
+
+document.querySelector('.text-edit').addEventListener('keypress', function(evt) {
+  if (evt.which === 13) {
+      evt.preventDefault();
+  }
+});
+
+document.querySelector('.quantity-edit').addEventListener('keypress', function(evt) {
+  if (evt.which === 13) {
+      evt.preventDefault();
+  }
+});
+
+function editItem() {
+    const item = event.target.parentNode;
+    const textEdit = item.querySelector('.text-edit');
+    const quantityEdit = item.querySelector('.quantity-edit');
+    if (event.target.className === 'added-item-edit') {
+      event.target.innerText = "Save";
+      event.target.className ='added-item-editing';
+      textEdit.setAttribute('contenteditable', true);
+      textEdit.setAttribute('style', "background-color: rgba(255,255,255, .4);");
+      quantityEdit.setAttribute('contenteditable', true);
+      quantityEdit.setAttribute('style', "background-color: rgba(255,255,255, .4);");
+      textEdit.focus();
+      } else {
+        event.target.innerText = "Edit";
+        event.target.className ='added-item-edit';
+        textEdit.setAttribute('contenteditable', false);
+        quantityEdit.setAttribute('contenteditable', false);
+        textEdit.setAttribute('style', "background-color: rgba(255,255,255, .0);");
+        quantityEdit.setAttribute('style', "background-color: rgba(255,255,255, .0);");
+        quantityEdit.blur();
+        textEdit.blur();
+
+        saveEdited(event);
+
+        }
+}
+
+function saveEdited(event) {
+      const item = event.target.parentNode;
+      const itemId = item.id;
+      const parent = item.parentNode;
+      const id = parent.id;
+      let todos = data.todo;
+      let dones = data.done;
+      const textEdit = item.querySelector('.text-edit');
+      const quantityEdit = item.querySelector('.quantity-edit');
+
+
+
+      if (id === 'added-items') {
+        for(let i = 0; i < todos.length; i += 1) {
+          if(todos[i].key == itemId) {
+            let myObject = todos.find(function(obj){
+              return obj.key == itemId;
+            });
+            let myNewObject = todos.find(function(obj){
+              return obj.key == itemId;
+            });
+
+            myNewObject.addedText = textEdit.innerText;
+            myNewObject.addedQuantity = quantityEdit.innerText;
+
+            console.log(textEdit, quantityEdit);
+
+            todos.splice(i, 1);
+            todos.push(myObject);
+        }
+        }
+      } 
+      // else if (id === 'done-items') {
+      //   for(let i = 0; i < dones.length; i += 1) {
+      //     if(dones[i].key == itemId) {
+      //       let myNewObject1 = dones.find(function(obj){
+      //         return obj.key == itemId;
+      //       });
+
+      //       myNewObject1.addedText = textEdit.innerText;
+      //       myNewObject1.addedQuantity = quantityEdit.innerText;
+
+      //       console.log(myObject1);
+            
+      //       dones.splice(i, 1);
+      //       dones.push(myObject1);
+      //   }
+      //  }
+      // }
+
+      console.log(todos);
+      console.log(dones);
+
+
+}
+
+
+
+function doneItem(event) {
   const item = event.target.parentNode;
   const itemId = item.id;
   const parent = item.parentNode;
@@ -153,11 +255,18 @@ function renderItem(uniqueKey, addedText, quantity){
     
     const addedItemText = document.createElement('div');
     addedItemText.className = 'added-item-text';
-    addedItemText.innerHTML = '<p ondblclick="this.contentEditable=true;this.className=\'inEdit\';" onblur="this.contentEditable=false;this.className=\'\';" contenteditable="false" class="">' + addedText + '</p>';
+    addedItemText.innerHTML = '<p contentEditable="false" class="text-edit">' + addedText + '</p>';
+    // addedItemText.innerHTML = `<input class="text-edit" value = "${addedText}" readonly />`;
+
+    const addedItemEdit = document.createElement('div');
+    addedItemEdit.addEventListener('click', editItem);
+    addedItemEdit.className = 'added-item-edit';
+    addedItemEdit.innerText = 'Edit';
 
     const addedQuantity = document.createElement('div');
     addedQuantity.className = 'added-quantity';
-    addedQuantity.innerText = quantity;
+    addedQuantity.innerHTML = '<p contentEditable="false" class="quantity-edit">' + quantity + '</p>';
+    // addedItemText.innerHTML = `<input class="quantity-edit" value = "${quantity}" readonly />`;
 
     const deleteButton = document.createElement('div');
     deleteButton.addEventListener('click', deleteItem);
@@ -168,6 +277,7 @@ function renderItem(uniqueKey, addedText, quantity){
   
   addedItem.appendChild(doneButton);
   addedItem.appendChild(addedItemText);
+  addedItem.appendChild(addedItemEdit);
   addedItem.appendChild(addedQuantity);
   addedItem.appendChild(deleteButton);
 
